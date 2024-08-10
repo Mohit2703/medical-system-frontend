@@ -1,0 +1,36 @@
+#sidebar-nav {
+    background-color: rgba(9, 9, 9, 0.9);
+    color: #f2f2f2;
+    border-right: 1px solid #e9ecef;
+    height: calc(100vh - 4.3em);
+    margin: 4.3em 0 0 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    z-index: 1;
+}
+
+.sidebar-option {
+    padding: 1em 1.5em;
+    text-decoration: none;
+    display: block;
+    color: #b6b6b9;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#topbar-nav {
+    background-color: rgba(9, 9, 9, 0.9);
+    color: #f2f2f2;
+    height: 4.3em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#login-btn{
+    background-color: #d97757;
+}
