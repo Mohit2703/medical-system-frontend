@@ -1,3 +1,4 @@
+'use client';
 import SideNav from "./SideNav";
 import TopNav from "./TopNav";
 import './Navbar.css'

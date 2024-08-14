@@ -1,7 +1,9 @@
 'use client';
-import './login.css';
-import { Button, Card, CardBody, CardHeader, Center, Container, FormControl, FormLabel, Heading, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react";
+import { Button, Card, CardBody, CardHeader, Center, Container, FormControl, FormLabel, Heading, Input, InputGroup, InputRightElement, Link, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { APICall } from '@/app/api/api';
+import { LOGIN } from '@/app/GlobalRedux/Features/auth/authSlice';
 
 const LoginPage = () => {
     const [login, setLogin] = useState({ email: '', password: '' })
@@ -12,11 +14,40 @@ const LoginPage = () => {
     const [show, setShow] = useState(false)
     const handleShowClick = () => setShow(!show)
 
+    const dispatch = useDispatch();
+
+    const handleLoginClick = async () => {
+        console.log("API Login");
+        APICall('POST', login, 'users/login_user/', false).then((res) => {
+            console.log("ghjkl;");
+            const loginData = res;
+
+            if (loginData.status === 201) {
+                try {
+                    console.log('Login success');
+                    console.log(loginData.data.token);
+                    console.log(loginData.data.user);
+                    const payload = {
+                        token: loginData.data.token,
+                        user: loginData.data.user,
+                    }
+                    window.localStorage.setItem('token', loginData.data.token);
+                    window.localStorage.setItem('user', JSON.stringify(loginData.data.user));
+                    dispatch(LOGIN(payload));
+                    window.location.reload();
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
     return (
         <>
-            <Container class="container-auth">
-                <Card class="card-auth">
+            <Container>
+                <Card>
                     <CardHeader bg={"transparent"}>
                         <Heading as="h1" size="lg">Login</Heading>
                     </CardHeader>
@@ -42,14 +73,13 @@ const LoginPage = () => {
                                 </InputRightElement>
                             </InputGroup>
                         </FormControl>
-                        <Button className={'auth-btn'} size='md' variant='solid' m={2}>
+                        <Button bgColor={"#d97757"} color={"#f2f2f2"} size='md' variant='solid' m={2} onClick={handleLoginClick}>
                             Login
                         </Button>
                         <Center>
-                            Dont have an account? <a href='/auth/register'>Register</a>
+                            Dont have an account? <Link color='#d97757' href='/auth/register'>Register</Link>
                         </Center>
                     </CardBody>
-                    {/* </div> */}
                 </Card>
             </Container>
         </>
