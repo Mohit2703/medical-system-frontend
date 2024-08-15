@@ -16,7 +16,6 @@ const APICall = async(method, body, endpoint, authReq) => {
 
     if (method === 'POST') {
         return await axios.post(url, body, { headers }).then((res) => {
-            // console.log(res);
             return res;
         }).catch((err) => {
             if (err.status === 401) {

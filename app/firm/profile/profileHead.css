@@ -1,0 +1,11 @@
+.profileHead_card {
+    height: fit-content;
+    width: 50vw;
+}
+
+.company_head {
+    background-image: url("https://media.licdn.com/dms/image/D563DAQGT2cIISadIlw/image-scale_191_1128/0/1714387548075/d_e_shaw_india_private_limited_cover?e=1724310000&v=beta&t=0g38iu7yO5WGiYC7cqqwr6M01bfCy1cppmqYXo7GTPU");
+    padding: 20px;
+    height: 134px;
+    border-radius: 5px;
+}

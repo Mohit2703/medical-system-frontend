@@ -1,6 +1,11 @@
 // theme.js
 import { extendTheme, theme as base } from '@chakra-ui/react';
 import { cardTheme } from './Themes/cardTheme';
+import { modalTheme } from './Themes/modalTheme';
+
+export const theme = extendTheme({
+  components: { Modal: modalTheme },
+})
 
 // Define your custom theme
 const customTheme = extendTheme({
@@ -30,6 +35,7 @@ const customTheme = extendTheme({
     },
     components: {
         Card: cardTheme,
+        Modal: modalTheme,
     },
 });
 
