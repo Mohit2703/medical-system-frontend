@@ -2,6 +2,7 @@
 import { extendTheme, theme as base } from '@chakra-ui/react';
 import { cardTheme } from './Themes/cardTheme';
 import { modalTheme } from './Themes/modalTheme';
+import { tableTheme } from './Themes/tableTheme';
 
 export const theme = extendTheme({
   components: { Modal: modalTheme },
@@ -36,6 +37,7 @@ const customTheme = extendTheme({
     components: {
         Card: cardTheme,
         Modal: modalTheme,
+        Table: tableTheme,
     },
 });
 
